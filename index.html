@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkiel Celvian - Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Dark Theme Colors */
+        :root {
+            --bg-dark-primary: #000000; /* Hitam pekat */
+            --bg-dark-secondary: #1a1a1a; /* Abu-abu gelap */
+            --accent-color: #007bff; /* Biru aksen */
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark-primary) 0%, var(--bg-dark-secondary) 100%);
+            overflow-x: hidden;
+            will-change: background;
+        }
+
+        /* Animasi dan Efek */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 20px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        .performance-hover {
+            transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1), 
+                        box-shadow 0.2s ease-in-out;
+            will-change: transform, box-shadow;
+        }
+
+        .performance-hover:hover {
+            transform: scale(1.015);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center font-sans text-gray-100">
+    <div class="w-full max-w-md mx-auto bg-gray-800 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden performance-hover animate-fade-in-up">
+        <div class="relative">
+            <img src="https://i.imgur.com/1yqPabE.jpeg" alt="Banner Profile" class="w-full h-48 object-cover opacity-70 transition-opacity duration-300 hover:opacity-90"/>
+            <div class="absolute -bottom-12 left-4 border-4 border-gray-800 rounded-full overflow-hidden transform transition-transform duration-300 hover:scale-105">
+                <img src="https://i.imgur.com/KYy39Lm.jpeg" alt="Profile Picture" class="w-24 h-24 object-cover"/>
+            </div>
+        </div>
+        
+        <div class="p-6 pt-16">
+            <h1 class="text-3xl font-bold mb-4 text-white" data-text="Arkiel Celvian">
+                Arkiel Celvian
+            </h1>
+            
+            <div class="space-y-4">
+                <div class="bg-gray-700 p-4 rounded-xl transition-all duration-300 performance-hover">
+                    <h2 class="text-xl font-semibold mb-2 text-blue-300">
+                        <i class="fas fa-user-circle mr-2"></i>Tentang Saya
+                    </h2>
+                    <p class="text-gray-300">
+                        Saya adalah seorang murid sekolah menengah atas yang berdedikasi dengan minat tinggi di bidang informatika dan teknologi informasi. Saya suka bersenang-senang, jadi jangan lupa menikmati waktu bersama saya! :)
+                    </p>
+                </div>
+                
+<div class="bg-gray-700 p-4 rounded-xl transition-all duration-300 performance-hover">
+    <h2 class="text-xl font-semibold mb-2 text-blue-300">
+        <i class="fas fa-address-book mr-2"></i>Kontak & Sosial Media
+    </h2>
+    <div class="space-y-2">
+        <a href="https://wa.me/6281267010407" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-green-400 transition-colors duration-200">
+            <i class="fab fa-whatsapp mr-2 text-green-500"></i>
+            <span>WhatsApp</span>
+        </a>
+        <a href="https://www.tiktok.com/@Kyvschleiv" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-blue-400 transition-colors duration-200">
+            <i class="fab fa-tiktok mr-2"></i>
+            <span>Tiktok</span>
+        </a>
+        <a href="https://github.com/R2RSpace" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-purple-400 transition-colors duration-200">
+            <i class="fab fa-github mr-2"></i>
+            <span>Github</span>
+        </a>
+        <a href="https://www.facebook.com/Kyvschleiv?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-blue-500 transition-colors duration-200">
+            <i class="fab fa-facebook mr-2 text-blue-500"></i>
+            <span>Facebook</span>
+        </a>
+    </div>
+</div>
+        
+        <div class="bg-gray-800 p-4 text-center text-gray-400 text-sm">
+            © 2024 Hak Cipta Dilindungi Undang-Undang
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            console.log('Page loaded efficiently');
+        });
+    </script>
+</body>
+</html>

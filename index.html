@@ -7,63 +7,192 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Dark Theme Colors */
         :root {
-            --bg-dark-primary: #000000; /* Hitam pekat */
-            --bg-dark-secondary: #1a1a1a; /* Abu-abu gelap */
-            --accent-color: #007bff; /* Biru aksen */
+            --bg-dark-primary: #000000;
+            --bg-dark-secondary: #1a1a1a;
+            --accent-color: #007bff;
         }
 
-        body {
-            background: linear-gradient(135deg, var(--bg-dark-primary) 0%, var(--bg-dark-secondary) 100%);
-            overflow-x: hidden;
-            will-change: background;
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Animasi dan Efek */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translate3d(0, 20px, 0);
-            }
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
-        .performance-hover {
-            transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                        box-shadow 0.2s ease-in-out;
+        @keyframes breatheOpacity {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .banner-scroll-container {
+            overflow-x: scroll;
+            white-space: nowrap;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .banner-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .banner-scroll-inner {
+            display: inline-flex;
+            transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .banner-item {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-item img {
+            transition: transform 0.5s ease, filter 0.5s ease;
+            animation: breatheOpacity 6s infinite alternate;
+            width: 100vw;
+            max-width: 100%;
+            height: 14rem;
+            object-fit: cover;
+        }
+
+        .banner-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .banner-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            animation: subtleFloat 3s ease-in-out infinite;
+        }
+
+        .banner-nav-btn:hover {
+            background-color: rgba(255,255,255,0.4);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .banner-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .banner-dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .banner-dot.active {
+            background-color: white;
+            width: 12px;
+        }
+
+        .profile-picture {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .social-link {
+            transition: all 0.3s ease;
             will-change: transform, box-shadow;
         }
 
-        .performance-hover:hover {
-            transform: scale(1.015);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center font-sans text-gray-100">
-    <div class="w-full max-w-md mx-auto bg-gray-800 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden performance-hover animate-fade-in-up">
+<body class="min-h-screen flex items-center justify-center font-sans text-gray-100 bg-gray-900">
+    <div class="w-full max-w-md mx-auto bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
         <div class="relative">
-            <img src="https://i.imgur.com/1yqPabE.jpeg" alt="Banner Profile" class="w-full h-48 object-cover opacity-70 transition-opacity duration-300 hover:opacity-90"/>
-            <div class="absolute -bottom-12 left-4 border-4 border-gray-800 rounded-full overflow-hidden transform transition-transform duration-300 hover:scale-105">
+            <!-- Horizontally Scrollable Banner -->
+            <div class="banner-scroll-container" id="bannerContainer">
+                <!-- Banner Images Container -->
+                <div class="banner-scroll-inner" id="bannerInner">
+                    <div class="banner-item">
+                        <img src="https://i.imgur.com/1yqPabE.jpeg" alt="Banner 1"/>
+                    </div>
+                    <div class="banner-item">
+                        <img src="https://i.imgur.com/ID9YbIg.jpeg" alt="Banner 2"/>
+                    </div>
+                    <div class="banner-item">
+                        <img src="https://i.imgur.com/pLKVDv0_d.webp?maxwidth=1520&fidelity=grand" alt="Banner 3"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Previous Button -->
+            <div class="banner-nav-btn left-0" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+
+            <!-- Next Button -->
+            <div class="banner-nav-btn right-0" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+
+            <!-- Pagination Dots -->
+            <div class="banner-pagination" id="paginationDots">
+                <div class="banner-dot" data-index="0"></div>
+                <div class="banner-dot" data-index="1"></div>
+                <div class="banner-dot" data-index="2"></div>
+            </div>
+
+            <!-- Profile Picture -->
+            <div class="absolute -bottom-12 left-4 border-4 border-gray-800 rounded-full overflow-hidden profile-picture">
                 <img src="https://i.imgur.com/KYy39Lm.jpeg" alt="Profile Picture" class="w-24 h-24 object-cover"/>
             </div>
         </div>
         
+        <!-- Rest of the content remains the same as previous version -->
         <div class="p-6 pt-16">
-            <h1 class="text-3xl font-bold mb-4 text-white" data-text="Arkiel Celvian">
+            <h1 class="text-3xl font-bold mb-4 text-white flex items-center">
                 Arkiel Celvian
+                <span class="ml-2 text-blue-500">
+                    <i class="fas fa-check-circle"></i>
+                </span>
             </h1>
             
             <div class="space-y-4">
-                <div class="bg-gray-700 p-4 rounded-xl transition-all duration-300 performance-hover">
+                <div class="bg-gray-700 p-4 rounded-xl hover:bg-gray-600 transition-colors">
                     <h2 class="text-xl font-semibold mb-2 text-blue-300">
                         <i class="fas fa-user-circle mr-2"></i>Tentang Saya
                     </h2>
@@ -72,38 +201,86 @@
                     </p>
                 </div>
                 
-<div class="bg-gray-700 p-4 rounded-xl transition-all duration-300 performance-hover">
-    <h2 class="text-xl font-semibold mb-2 text-blue-300">
-        <i class="fas fa-address-book mr-2"></i>Kontak & Sosial Media
-    </h2>
-    <div class="space-y-2">
-        <a href="https://wa.me/6281267010407" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-green-400 transition-colors duration-200">
-            <i class="fab fa-whatsapp mr-2 text-green-500"></i>
-            <span>WhatsApp</span>
-        </a>
-        <a href="https://www.tiktok.com/@Kyvschleiv" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-blue-400 transition-colors duration-200">
-            <i class="fab fa-tiktok mr-2"></i>
-            <span>Tiktok</span>
-        </a>
-        <a href="https://github.com/R2RSpace" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-purple-400 transition-colors duration-200">
-            <i class="fab fa-github mr-2"></i>
-            <span>Github</span>
-        </a>
-        <a href="https://www.facebook.com/Kyvschleiv?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-blue-500 transition-colors duration-200">
-            <i class="fab fa-facebook mr-2 text-blue-500"></i>
-            <span>Facebook</span>
-        </a>
-    </div>
-</div>
-        
-        <div class="bg-gray-800 p-4 text-center text-gray-400 text-sm">
-            © 2024 Hak Cipta Dilindungi Undang-Undang
+                <div class="bg-gray-700 p-4 rounded-xl">
+                    <h2 class="text-xl font-semibold mb-4 text-blue-300">
+                        <i class="fas fa-address-book mr-2"></i>Kontak & Sosial Media
+                    </h2>
+                    <div class="grid grid-cols-2 gap-2">
+                        <a href="https://wa.me/6281267010407" target="_blank" class="social-link flex items-center justify-center bg-green-500 text-white font-medium py-2 px-4 rounded-lg">
+                           <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                        </a>
+                        <a href="https://www.tiktok.com/@Kyvschleiv" target="_blank" class="social-link flex items-center justify-center bg-black text-white font-medium py-2 px-4 rounded-lg">
+                           <i class="fab fa-tiktok mr-2"></i>Tiktok
+                        </a>
+                        <a href="https://github.com/R2RSpace" target="_blank" class="social-link flex items-center justify-center bg-gray-800 text-white font-medium py-2 px-4 rounded-lg">
+                           <i class="fab fa-github mr-2"></i>Github
+                        </a>
+                        <a href="https://www.facebook.com/Kyvschleiv?mibextid=ZbWKwL" target="_blank" class="social-link flex items-center justify-center bg-blue-500 text-white font-medium py-2 px-4 rounded-lg">
+                           <i class="fab fa-facebook mr-2"></i>Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-800 p-4 text-center text-gray-400 text-sm">
+                © 2024 Hak Cipta Dilindungi Undang-Undang
+            </div>
         </div>
     </div>
 
     <script>
-        window.addEventListener('load', () => {
-            console.log('Page loaded efficiently');
+        const bannerContainer = document.getElementById('bannerContainer');
+        const bannerInner = document.getElementById('bannerInner');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const bannerDots = document.querySelectorAll('.banner-dot');
+        
+        let currentIndex = 0;
+        const totalItems = bannerDots.length;
+
+        function updateBanner() {
+            // Smooth scroll to the current banner
+            bannerContainer.scrollTo({
+                left: currentIndex * bannerContainer.clientWidth,
+                behavior: 'smooth'
+            });
+            
+            // Update pagination dots
+            bannerDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // Next Button
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateBanner();
+        });
+
+        // Previous Button
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateBanner();
+        });
+
+        // Dot Navigation
+        bannerDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentIndex = parseInt(dot.getAttribute('data-index'));
+                updateBanner();
+            });
+        });
+
+        // Scroll Event for Dot Highlighting
+        bannerContainer.addEventListener('scroll', () => {
+            const scrollPosition = bannerContainer.scrollLeft;
+            const containerWidth = bannerContainer.clientWidth;
+            
+            currentIndex = Math.round(scrollPosition / containerWidth);
+            
+            bannerDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
         });
     </script>
 </body>

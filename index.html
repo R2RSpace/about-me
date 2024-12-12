@@ -104,75 +104,6 @@
             }
         }
 
-        /* Rest of the previous CSS remains the same */
-        [Rest of the previous CSS content remains unchanged]
-    </style>
-</head>
-<body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="gemini-loader">
-            <div class="gemini-dot"></div>
-            <div class="gemini-dot"></div>
-            <div class="gemini-dot"></div>
-            <div class="gemini-dot"></div>
-            <div class="loading-text">Memuat...</div>
-        </div>
-    </div>
-
-    <!-- Rest of the existing content (previous container) -->
-    <div class="container" style="display:none;">
-        <!-- [Previous container content remains unchanged] -->
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const preloader = document.getElementById('preloader');
-            const container = document.querySelector('.container');
-
-            // Remove preloader and show content
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                container.style.display = 'block';
-                
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 500);
-            }, 3000);
-        });
-    </script>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Arkiel Celvian</title>
-    
-    <!-- Font Imports -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --background-primary: #121212;
-            --background-secondary: #1E1E1E;
-            --text-primary: #FFFFFF;
-            --text-secondary: #A0A0A0;
-            --border-color: #3A3A3A;
-            --blue-verified: #1D9BF0;
-            --social-hover: #2C2C2C;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--background-primary);
@@ -358,9 +289,54 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Tambahan animasi untuk username dan deskripsi */
+        .profile-handle {
+            color: #6E6E6E;  /* Abu-abu lebih gelap */
+            opacity: 0;
+            animation: usernameFade 1s 2.2s forwards;
+        }
+
+        .profile-description {
+            opacity: 0;
+            animation: descriptionFade 1s 2.3s forwards;
+        }
+
+        @keyframes usernameFade {
+            from { 
+                opacity: 0; 
+                transform: translateX(-20px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes descriptionFade {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="gemini-loader">
+            <div class="gemini-dot"></div>
+            <div class="gemini-dot"></div>
+            <div class="gemini-dot"></div>
+            <div class="gemini-dot"></div>
+            <div class="loading-text">Memuat...</div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Banner -->
         <div class="banner-scroll-container">
@@ -423,5 +399,22 @@
             © 2024 Hak cipta dilindungi undang-undang.
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const preloader = document.getElementById('preloader');
+            const container = document.querySelector('.container');
+
+            // Remove preloader and show content
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                container.style.display = 'block';
+                
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 3000);
+        });
+    </script>
 </body>
 </html>

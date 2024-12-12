@@ -1,47 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arkiel Celvian - Profile</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Profil Arkiel Celvian</title>
+    
+    <!-- Font Imports -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg-dark-primary: #000000;
-            --bg-dark-secondary: #1a1a1a;
-            --accent-color: #007bff;
+            --background-primary: #121212;
+            --background-secondary: #1E1E1E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --border-color: #3A3A3A;
+            --blue-verified: #1D9BF0;
+            --social-hover: #2C2C2C;
         }
 
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
-        @keyframes subtleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        body, html {
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-primary);
+            color: var(--text-primary);
+            margin: 0;
+            overflow-x: hidden;
         }
 
-        @keyframes breatheOpacity {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--background-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .gemini-loader {
+            display: flex;
+            align-items: center;
+        }
+
+        .gemini-dot {
+            width: 15px;
+            height: 15px;
+            margin: 0 5px;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: geminiPulse 1.2s infinite;
+        }
+
+        .gemini-dot:nth-child(1) {
+            background-color: #4285F4; /* Blue */
+            animation-delay: 0s;
+        }
+
+        .gemini-dot:nth-child(2) {
+            background-color: #34A853; /* Green */
+            animation-delay: 0.4s;
+        }
+
+        .gemini-dot:nth-child(3) {
+            background-color: #FBBC05; /* Yellow */
+            animation-delay: 0.8s;
+        }
+
+        .gemini-dot:nth-child(4) {
+            background-color: #EA4335; /* Red */
+            animation-delay: 1.2s;
+        }
+
+        .loading-text {
+            margin-left: 20px;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        @keyframes geminiPulse {
+            0%, 100% { 
+                transform: scale(0.7);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Rest of the previous CSS remains the same */
+        [Rest of the previous CSS content remains unchanged]
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="gemini-loader">
+            <div class="gemini-dot"></div>
+            <div class="gemini-dot"></div>
+            <div class="gemini-dot"></div>
+            <div class="gemini-dot"></div>
+            <div class="loading-text">Memuat...</div>
+        </div>
+    </div>
+
+    <!-- Rest of the existing content (previous container) -->
+    <div class="container" style="display:none;">
+        <!-- [Previous container content remains unchanged] -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const preloader = document.getElementById('preloader');
+            const container = document.querySelector('.container');
+
+            // Remove preloader and show content
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                container.style.display = 'block';
+                
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 3000);
+        });
+    </script>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Arkiel Celvian</title>
+    
+    <!-- Font Imports -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --background-primary: #121212;
+            --background-secondary: #1E1E1E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --border-color: #3A3A3A;
+            --blue-verified: #1D9BF0;
+            --social-hover: #2C2C2C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--background-primary);
+            overflow: hidden;
         }
 
         .banner-scroll-container {
-            overflow-x: scroll;
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
             white-space: nowrap;
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            position: relative;
-            border-top-left-radius: 1.5rem;
-            border-top-right-radius: 1.5rem;
-            background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
-            background-size: 400% 400%;
-            animation: gradientFlow 15s ease infinite;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            scroll-behavior: smooth;
         }
 
         .banner-scroll-container::-webkit-scrollbar {
@@ -50,238 +209,219 @@
 
         .banner-scroll-inner {
             display: inline-flex;
-            transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+            gap: 10px;
         }
 
         .banner-item {
             flex: 0 0 100%;
-            scroll-snap-align: center;
-            position: relative;
-            overflow: hidden;
+            scroll-snap-align: start;
         }
 
         .banner-item img {
-            transition: transform 0.5s ease, filter 0.5s ease;
-            animation: breatheOpacity 6s infinite alternate;
             width: 100vw;
             max-width: 100%;
             height: 14rem;
             object-fit: cover;
         }
 
-        .banner-item:hover img {
-            transform: scale(1.05);
-            filter: brightness(1.1);
+        .profile-header {
+            position: relative;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: popIn 1s 1s forwards;
         }
 
-        .banner-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255,255,255,0.2);
-            color: white;
+        @keyframes popIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            object-fit: cover;
+            border: 4px solid var(--background-primary);
+            position: absolute;
+            top: -60px;
+            left: 15px;
+            box-shadow: 0 0 0 4px var(--background-primary);
+            animation: photoReveal 1.5s 1.5s backwards;
+        }
+
+        @keyframes photoReveal {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .profile-info {
+            margin-left: 140px;
+            padding-top: 5px;
+            padding-bottom: 10px;
+        }
+
+        .profile-name-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-            animation: subtleFloat 3s ease-in-out infinite;
-        }
-
-        .banner-nav-btn:hover {
-            background-color: rgba(255,255,255,0.4);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .banner-pagination {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
             gap: 8px;
         }
 
-        .banner-dot {
-            width: 8px;
-            height: 8px;
-            background-color: rgba(255,255,255,0.5);
-            border-radius: 50%;
-            cursor: pointer;
+        .profile-name {
+            font-weight: 700;
+            font-size: 1.5rem;
+            animation: textFadeIn 1s 2s backwards;
+        }
+
+        @keyframes textFadeIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .verified-badge {
+            color: var(--blue-verified);
+            animation: badgeRotate 1s 2.5s backwards;
+        }
+
+        @keyframes badgeRotate {
+            from { transform: rotate(-180deg); opacity: 0; }
+            to { transform: rotate(0); opacity: 1; }
+        }
+
+        .social-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px;
+            background-color: var(--background-secondary);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: socialSlideUp 1s 2.7s forwards;
+        }
+
+        @keyframes socialSlideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .social-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background-color: var(--background-secondary);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: var(--text-primary);
+            transform: perspective(500px) rotateX(-20deg);
+            opacity: 0;
+            animation: socialButtonAppear 0.5s forwards;
         }
 
-        .banner-dot.active {
-            background-color: white;
-            width: 12px;
+        @keyframes socialButtonAppear {
+            from { transform: perspective(500px) rotateX(-20deg) scale(0.8); opacity: 0; }
+            to { transform: perspective(500px) rotateX(0) scale(1); opacity: 1; }
         }
 
-        .profile-picture {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .social-button:hover {
+            background-color: var(--social-hover);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .profile-picture:hover {
-            transform: scale(1.1) rotate(3deg);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        .about-me {
+            background-color: var(--background-secondary);
+            margin: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            color: var(--text-primary);
+            opacity: 0;
+            animation: aboutMeSlide 1s 3s forwards;
         }
 
-        .social-link {
-            transition: all 0.3s ease;
-            will-change: transform, box-shadow;
+        @keyframes aboutMeSlide {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        footer {
+            opacity: 0;
+            animation: footerFade 1s 3.5s forwards;
+        }
+
+        @keyframes footerFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center font-sans text-gray-100 bg-gray-900">
-    <div class="w-full max-w-md mx-auto bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
-        <div class="relative">
-            <!-- Horizontally Scrollable Banner -->
-            <div class="banner-scroll-container" id="bannerContainer">
-                <!-- Banner Images Container -->
-                <div class="banner-scroll-inner" id="bannerInner">
-                    <div class="banner-item">
-                        <img src="https://i.imgur.com/1yqPabE.jpeg" alt="Banner 1"/>
-                    </div>
-                    <div class="banner-item">
-                        <img src="https://i.imgur.com/ID9YbIg.jpeg" alt="Banner 2"/>
-                    </div>
-                    <div class="banner-item">
-                        <img src="https://i.imgur.com/pLKVDv0_d.webp?maxwidth=1520&fidelity=grand" alt="Banner 3"/>
-                    </div>
+<body>
+    <div class="container">
+        <!-- Banner -->
+        <div class="banner-scroll-container">
+            <div class="banner-scroll-inner">
+                <div class="banner-item">
+                    <img src="https://i.imgur.com/1yqPabE.jpeg" alt="Banner 1">
                 </div>
-            </div>
-
-            <!-- Previous Button -->
-            <div class="banner-nav-btn left-0" id="prevBtn">
-                <i class="fas fa-chevron-left"></i>
-            </div>
-
-            <!-- Next Button -->
-            <div class="banner-nav-btn right-0" id="nextBtn">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-
-            <!-- Pagination Dots -->
-            <div class="banner-pagination" id="paginationDots">
-                <div class="banner-dot" data-index="0"></div>
-                <div class="banner-dot" data-index="1"></div>
-                <div class="banner-dot" data-index="2"></div>
-            </div>
-
-            <!-- Profile Picture -->
-            <div class="absolute -bottom-12 left-4 border-4 border-gray-800 rounded-full overflow-hidden profile-picture">
-                <img src="https://i.imgur.com/KYy39Lm.jpeg" alt="Profile Picture" class="w-24 h-24 object-cover"/>
+                <div class="banner-item">
+                    <img src="https://i.imgur.com/ID9YbIg.jpeg" alt="Banner 2">
+                </div>
+                <div class="banner-item">
+                    <img src="https://i.imgur.com/pLKVDv0_d.webp?maxwidth=1520&fidelity=grand" alt="Banner 3">
+                </div>
             </div>
         </div>
-        
-        <!-- Rest of the content remains the same as previous version -->
-        <div class="p-6 pt-16">
-            <h1 class="text-3xl font-bold mb-4 text-white flex items-center">
-                Arkiel Celvian
-                <span class="ml-2 text-blue-500">
-                    <i class="fas fa-check-circle"></i>
-                </span>
-            </h1>
-            
-            <div class="space-y-4">
-                <div class="bg-gray-700 p-4 rounded-xl hover:bg-gray-600 transition-colors">
-                    <h2 class="text-xl font-semibold mb-2 text-blue-300">
-                        <i class="fas fa-user-circle mr-2"></i>Tentang Saya
-                    </h2>
-                    <p class="text-gray-300">
-                        Saya adalah seorang murid sekolah menengah atas yang berdedikasi dengan minat tinggi di bidang informatika dan teknologi informasi. Saya suka bersenang-senang, jadi jangan lupa menikmati waktu bersama saya! :)
-                    </p>
+
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <img src="https://i.imgur.com/KYy39Lm.jpeg" alt="Foto Profil" class="profile-photo">
+            <div class="profile-info">
+                <div class="profile-name-container">
+                    <span class="profile-name">Arkiel Celvian</span>
+                    <span class="verified-badge" title="Akun Terverifikasi">
+                        <i class="fas fa-check-circle"></i>
+                    </span>
                 </div>
-                
-                <div class="bg-gray-700 p-4 rounded-xl">
-                    <h2 class="text-xl font-semibold mb-4 text-blue-300">
-                        <i class="fas fa-address-book mr-2"></i>Kontak & Sosial Media
-                    </h2>
-                    <div class="grid grid-cols-2 gap-2">
-                        <a href="https://wa.me/6281267010407" target="_blank" class="social-link flex items-center justify-center bg-green-500 text-white font-medium py-2 px-4 rounded-lg">
-                           <i class="fab fa-whatsapp mr-2"></i>WhatsApp
-                        </a>
-                        <a href="https://www.tiktok.com/@Kyvschleiv" target="_blank" class="social-link flex items-center justify-center bg-black text-white font-medium py-2 px-4 rounded-lg">
-                           <i class="fab fa-tiktok mr-2"></i>Tiktok
-                        </a>
-                        <a href="https://github.com/R2RSpace" target="_blank" class="social-link flex items-center justify-center bg-gray-800 text-white font-medium py-2 px-4 rounded-lg">
-                           <i class="fab fa-github mr-2"></i>Github
-                        </a>
-                        <a href="https://www.facebook.com/Kyvschleiv?mibextid=ZbWKwL" target="_blank" class="social-link flex items-center justify-center bg-blue-500 text-white font-medium py-2 px-4 rounded-lg">
-                           <i class="fab fa-facebook mr-2"></i>Facebook
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-gray-800 p-4 text-center text-gray-400 text-sm">
-                © 2024 Hak Cipta Dilindungi Undang-Undang
+                <div class="profile-handle">@kyvschleiv</div>
+                <p class="profile-description">Web Learner and High-School Student.</p>
             </div>
         </div>
+
+        <!-- Tentang Saya -->
+        <div class="about-me">
+            <h2>Tentang Saya</h2>
+            <p>
+                Saya adalah seorang murid sekolah menengah atas yang berdedikasi dengan minat tinggi di bidang informatika dan teknologi informasi. Saya suka bersenang-senang, jadi jangan lupa menikmati waktu bersama saya! :)
+            </p>
+        </div>
+
+        <!-- Social Media Contacts -->
+        <div class="social-contacts">
+            <a href="https://wa.me/6281267010407" target="_blank" class="social-button whatsapp">
+                <i class="fab fa-whatsapp fa-lg"></i>
+            </a>
+            <a href="https://www.tiktok.com/@Kyvschleiv" target="_blank" class="social-button tiktok">
+                <i class="fab fa-tiktok fa-lg"></i>
+            </a>
+            <a href="https://github.com/R2RSpace" target="_blank" class="social-button github">
+                <i class="fab fa-github fa-lg"></i>
+            </a>
+            <a href="https://www.facebook.com/Kyvschleiv?mibextid=ZbWKwL" target="_blank" class="social-button facebook">
+                <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a href="mailto:kyvschleiv@gmail.com" class="social-button email">
+                <i class="fas fa-envelope fa-lg"></i>
+            </a>
+        </div>
+
+        <footer style="background-color: var(--background-secondary); padding: 15px; text-align: center; font-size: 0.9rem; color: var(--text-secondary); border-top: 1px solid var(--border-color);">
+            © 2024 Hak cipta dilindungi undang-undang.
+        </footer>
     </div>
-
-    <script>
-        const bannerContainer = document.getElementById('bannerContainer');
-        const bannerInner = document.getElementById('bannerInner');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const bannerDots = document.querySelectorAll('.banner-dot');
-        
-        let currentIndex = 0;
-        const totalItems = bannerDots.length;
-
-        function updateBanner() {
-            // Smooth scroll to the current banner
-            bannerContainer.scrollTo({
-                left: currentIndex * bannerContainer.clientWidth,
-                behavior: 'smooth'
-            });
-            
-            // Update pagination dots
-            bannerDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        // Next Button
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalItems;
-            updateBanner();
-        });
-
-        // Previous Button
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            updateBanner();
-        });
-
-        // Dot Navigation
-        bannerDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                currentIndex = parseInt(dot.getAttribute('data-index'));
-                updateBanner();
-            });
-        });
-
-        // Scroll Event for Dot Highlighting
-        bannerContainer.addEventListener('scroll', () => {
-            const scrollPosition = bannerContainer.scrollLeft;
-            const containerWidth = bannerContainer.clientWidth;
-            
-            currentIndex = Math.round(scrollPosition / containerWidth);
-            
-            bannerDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        });
-    </script>
 </body>
 </html>
